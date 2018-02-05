@@ -32,7 +32,7 @@
  * Nonce hooks: nonce_life, nonce_user_logged_out, explain_nonce_(verb)-(noun), check_admin_referer 
  * 
  */
-class WP_Nonce {
+class WPNonce {
 
 	// Constructor
 	function __construct() {
@@ -57,7 +57,12 @@ class WP_Nonce {
 	 * @param string $action The nonce action.
 	 */
 	public function ays( $action ) {
-		wp_nonce_ays( $action );
+		//if(function_exists('wp_nonce_ays')){
+			wp_nonce_ays( $action );
+		/*}else{
+			echo 'the function wp_nonce_ays does not exists.';
+		}*/
+
 	}
 
 	/**
@@ -187,4 +192,4 @@ class WP_Nonce {
 	}
 }
 
-new WP_Nonce();
+new WPNonce();

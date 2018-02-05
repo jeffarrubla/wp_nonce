@@ -1,5 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
+require './src/WPNonce.php';
 
 final class WPNonceTest extends TestCase
 {
