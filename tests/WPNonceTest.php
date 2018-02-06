@@ -1,13 +1,18 @@
 <?php
 use PHPUnit\Framework\TestCase;
 require './src/WPNonce.php';
+require './vendor/patchwork.phar';
 
 final class WPNonceTest extends TestCase
 {
 
 
+
+
     public function testCanDisplayMessage()
     {
+        redefine('wp_nonce_ays', 'Are you sure you want to do this?');
+
         $this->assertInstanceOf(
             WPNonce::class,
             WPNonce::ays('Are you sure you want to do this?')
