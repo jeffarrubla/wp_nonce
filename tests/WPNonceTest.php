@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 require './src/WPNonce.php';
-require './vendor/patchwork.phar';
 
 final class WPNonceTest extends TestCase
 {
