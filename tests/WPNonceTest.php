@@ -10,7 +10,7 @@ final class WPNonceTest extends TestCase
 
     public function testCanDisplayMessage()
     {
-        redefine('wp_nonce_ays', 'Are you sure you want to do this?');
+        Patchwork\redefine('wp_nonce_ays', function(){ echo 'Are you sure you want to do this?'; });
 
         $this->assertInstanceOf(
             WPNonce::class,
