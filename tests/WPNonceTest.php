@@ -6,14 +6,25 @@ final class WPNonceTest extends TestCase
 {
     private $WPNonce;
 
- 
+    /**
+     *
+     * Called at the beginning of testing.
+     * Initialize the class and redefine wp_nonce_*() functions with Patchwork.
+     *
+     */
     protected function setUp()
     {
         $this->WPNonce = new WPNonce();
 
-        Patchwork\redefine('wp_nonce_ays', function($action){ if($action == 'log-out') echo  'You are attempting to log out'; else echo 'Are you sure you want to do this?'; });
+        Patchwork\redefine('wp_nonce_ays', function($action){ if($action == 'log-out') echo  'You are attempting to log out'; else echo 'Are you sure you want to do this?'; });        
     }
  
+    /**
+     *
+     * Called at the end of testing.
+     * Destroy the class.
+     *
+     */
     protected function tearDown()
     {
         $this->WPNonce = NULL;
