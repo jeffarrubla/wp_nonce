@@ -4,32 +4,44 @@ require './src/WPNonce.php';
 
 final class WPNonceTest extends TestCase
 {
+    private $WPNonce;
+
+ 
+    protected function setUp()
+    {
+        $this->WPNonce = new WPNonce();
+
+        Patchwork\redefine('wp_nonce_ays', function($action){ if($action == 'log-out') echo  'You are attempting to log out'; else echo 'Are you sure you want to do this?'; });
+    }
+ 
+    protected function tearDown()
+    {
+        $this->WPNonce = NULL;
+    }
 
 
-
-
+/*
     public function testCanDisplayMessage()
     {
-        Patchwork\redefine('wp_nonce_ays', function(){ echo 'Are you sure you want to do this?'; });
-
+        
         $this->assertInstanceOf(
             WPNonce::class,
-            WPNonce::ays('Are you sure you want to do this?')
+            $this->WPNonce->ays('Are you sure you want to do this?')
         );
     }
 
-    /*public function testCannotDisplayMessage()
+    public function testCannotDisplayMessage()
     {
         $this->expectException(InvalidArgumentException::class);
 
         WPNonce::ays();
     }
-
+*/
     public function testLogout()
     {
         $this->assertEquals(
             '',
-            WPNonce::ays('log-out')
+            $this->WPNonce->ays('log-out')
         );
-    }*/
+    }
 }

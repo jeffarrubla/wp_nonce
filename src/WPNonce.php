@@ -7,8 +7,8 @@
 /*
 	Plugin Name: WP Nonce
 	Plugin URI: 
-	description: Class used to overwrite the wp_nonce_*() functions to make them  in an oriented object way.
-				 These functions are: wp_explain_nonce(), wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), 
+	description: Class to used wp_nonce_*() functions in an oriented object way.
+				 These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), 
 				 					  wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), 
 				 					  check_ajax_referer(), wp_referer_field()	
 	Version: 0.1
@@ -27,7 +27,7 @@
 /**
  * 
  * These are the functions to replace:
- * Nonce functions: wp_explain_nonce(), wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), check_ajax_referer(), wp_referer_field()
+ * Nonce functions: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), check_ajax_referer(), wp_referer_field()
  *
  * Nonce hooks: nonce_life, nonce_user_logged_out, explain_nonce_(verb)-(noun), check_admin_referer 
  * 
