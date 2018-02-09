@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * Include Patchwork, autoload and functions file to make the testing
+ * Include Patchwork, autoload and functions files to make the testing
  * Patchwork must be include first always.
  *
  */
