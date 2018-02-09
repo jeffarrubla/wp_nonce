@@ -16,7 +16,7 @@ final class WPNonceTest extends TestCase
     {
         $this->WPNonce = new WPNonce();
 
-        Patchwork\redefine('wp_nonce_ays', function($action){ if($action == 'log-out') echo  'You are attempting to log out'; else echo 'Are you sure you want to do this?'; });        
+        Patchwork\redefine('wp_nonce_ays', function($action){ if($action == 'log-out') return  'You are attempting to log out'; else return 'Are you sure you want to do this?'; });        
     }
  
     /**
@@ -50,7 +50,7 @@ final class WPNonceTest extends TestCase
 */
     public function testLogout()
     {
-        var_dump( $this->WPNonce->ays('log-out'));
+        //var_dump( $this->WPNonce->ays('log-out'));
         $this->assertEquals(
             '',
             $this->WPNonce->ays('log-out')
