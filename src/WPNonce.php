@@ -7,7 +7,7 @@
 /*
 	Plugin Name: WP Nonce
 	Plugin URI: 
-	description: Class to used wp_nonce_*() functions in an oriented object way.
+	description: Class to use wp_nonce_*() functions in an object oriented  way.
 				 These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), 
 				 					  wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), 
 				 					  check_ajax_referer(), wp_referer_field()	
@@ -58,7 +58,7 @@ class WPNonce {
 	 */
 	public function ays( $action ) {
 		//if(function_exists('wp_nonce_ays')){
-			wp_nonce_ays( $action );
+			echo wp_nonce_ays( $action );
 		/*}else{
 			echo 'the function wp_nonce_ays does not exists.';
 		}*/

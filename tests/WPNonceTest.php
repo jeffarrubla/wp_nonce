@@ -50,6 +50,7 @@ final class WPNonceTest extends TestCase
 */
     public function testLogout()
     {
+        var_dump( $this->WPNonce->ays('log-out'));
         $this->assertEquals(
             '',
             $this->WPNonce->ays('log-out')
