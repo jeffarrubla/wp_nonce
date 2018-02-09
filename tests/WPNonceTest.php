@@ -31,26 +31,33 @@ final class WPNonceTest extends TestCase
     }
 
 
-/*
-    public function testCanDisplayMessage()
-    {
-        
+
+    public function testIsInstaceOf()
+    {        
         $this->assertInstanceOf(
             WPNonce::class,
+            $this->WPNonce
+        );
+    }
+
+    public function testCanDisplayMessage()
+    {        
+        $this->assertEquals(
+            'Are you sure you want to do this?',
             $this->WPNonce->ays('Are you sure you want to do this?')
         );
     }
 
+
     public function testCannotDisplayMessage()
     {
         $this->expectException(InvalidArgumentException::class);
-
-        WPNonce::ays();
+        
     }
-*/
-    public function testLogout()
-    {
-        //var_dump( $this->WPNonce->ays('log-out'));
+
+
+    public function testLogoutFailure()
+    {        
         $this->assertEquals(
             '',
             $this->WPNonce->ays('log-out')
