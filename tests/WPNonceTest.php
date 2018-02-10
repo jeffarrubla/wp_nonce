@@ -70,4 +70,28 @@ final class WPNonceTest extends TestCase
         );
     }
 
+    /**
+     *
+     * To determinate if wp_nonce_field can be called from ays method.
+     *
+     * Refined wp_nonce_field function with patchwork 
+     *
+     */
+    public function testCanReturnField()
+    {
+        Patchwork\redefine('wp_nonce_field', 
+                                function( $action = -1, $name = "_wpnonce", $referer = true , $echo = true ){                                                             
+
+                                    $nonce_field = '<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . $action . '" />';
+
+                                    return $nonce_field;
+                                }                              
+                            );
+
+        $this->assertEquals(
+            '<input type="hidden" id="_wpnonce" name="_wpnonce" value="new_value" />',
+            $this->WPNonce->field( 'new_value' )
+        );
+    }
+
 }

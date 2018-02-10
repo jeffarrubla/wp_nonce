@@ -9,3 +9,7 @@
 function wp_nonce_ays( $action ){
 
 }
+
+function wp_nonce_field( $action , $name, $referer, $echo ) {
+
+}
