@@ -21,7 +21,7 @@ final class WPNonceTest extends TestCase
     /**
      *
      * Called at the end of testing.
-     * Destroy the class.
+     * Release resources.
      *
      */
     protected function tearDown()
@@ -58,10 +58,7 @@ final class WPNonceTest extends TestCase
         $action;              
         Patchwork\redefine('wp_nonce_ays', 
                                 function($arg) use (&$action){ 
-                                    if($arg == 'log-out')
-                                        $action = 'You are attempting to log out'; 
-                                    else 
-                                        $action = 'Are you sure you want to do this?';                                               
+                                    $action = $arg;                                            
                                 }                              
                             );
         
@@ -73,41 +70,4 @@ final class WPNonceTest extends TestCase
         );
     }
 
-/*
-    public function testCannotDisplayMessage()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        
-    }
-*/
-
-    /**
-     *
-     * To determinate if wp_nonce_ays can be called from ays method to logout.
-     *
-     * Refined wp_nonce_ays function with patchwork 
-     *
-     * wp_nonce_ays always die, so to check if the function is called, 
-     * modify a variable inside it, if the variable changes, the function
-     * is been called.
-     *
-     */
-    public function testLogout()
-    {
-        $action;
-        Patchwork\redefine('wp_nonce_ays', 
-                                function($arg) use (&$action){ 
-                                    if($arg == 'log-out')
-                                        $action = 'You are attempting to log out'; 
-                                    else 
-                                        $action = 'Are you sure you want to do this?';                                               
-                                }                              
-                            );
-
-        $this->WPNonce->ays('log-out');
-        $this->assertEquals(
-            'You are attempting to log out',
-            $action
-        );
-    }
 }
