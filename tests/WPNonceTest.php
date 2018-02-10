@@ -72,8 +72,8 @@ final class WPNonceTest extends TestCase
             $action           
         );
     }
-/*
 
+/*
     public function testCannotDisplayMessage()
     {
         $this->expectException(InvalidArgumentException::class);

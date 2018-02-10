@@ -57,11 +57,11 @@ class WPNonce {
 	 * @param string $action The nonce action.
 	 */
 	public function ays( $action ) {
-		//if(function_exists('wp_nonce_ays')){
+		if(function_exists('wp_nonce_ays')){
 			echo wp_nonce_ays( $action );
-		/*}else{
+		}else{
 			echo 'the function wp_nonce_ays does not exists.';
-		}*/
+		}
 
 	}
 
