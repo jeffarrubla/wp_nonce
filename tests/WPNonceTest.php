@@ -29,8 +29,11 @@ final class WPNonceTest extends TestCase
         $this->WPNonce = NULL;
     }
 
-/*
-
+    /**
+     *
+     * To determinate if the class is a instace of the WPNonce
+     *
+     */
     public function testIsInstaceOf()
     {        
         $this->assertInstanceOf(
@@ -38,19 +41,21 @@ final class WPNonceTest extends TestCase
             $this->WPNonce
         );
     }
-*/
+
+    /**
+     *
+     * To determinate if wp_nonce_ays can be called from ays method.
+     *
+     * Refined wp_nonce_ays function with patchwork 
+     *
+     * wp_nonce_ays always die, so to check if the function is called, 
+     * modify a variable inside it, if the variable changes, the function
+     * is been called.
+     *
+     */
     public function testCanDisplayMessage()
     {   
-        $action;
-        /**
-         *
-         * Refined wp_nonce_ays function with patchwork 
-         *
-         * wp_nonce_ays always die, so to check if the function is called, 
-         * modify a variable inside it, if the variable changes, the function
-         * is been called.
-         *
-         */
+        $action;              
         Patchwork\redefine('wp_nonce_ays', 
                                 function($arg) use (&$action){ 
                                     if($arg == 'log-out')
@@ -59,8 +64,7 @@ final class WPNonceTest extends TestCase
                                         $action = 'Are you sure you want to do this?';                                               
                                 }                              
                             );
-
-        // call the funcion
+        
         $this->WPNonce->ays('Are you sure you want to do this?');
         // do assert to check if $action has been modify inside the function
         $this->assertEquals(
@@ -75,13 +79,35 @@ final class WPNonceTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         
     }
+*/
 
+    /**
+     *
+     * To determinate if wp_nonce_ays can be called from ays method to logout.
+     *
+     * Refined wp_nonce_ays function with patchwork 
+     *
+     * wp_nonce_ays always die, so to check if the function is called, 
+     * modify a variable inside it, if the variable changes, the function
+     * is been called.
+     *
+     */
+    public function testLogout()
+    {
+        $action;
+        Patchwork\redefine('wp_nonce_ays', 
+                                function($arg) use (&$action){ 
+                                    if($arg == 'log-out')
+                                        $action = 'You are attempting to log out'; 
+                                    else 
+                                        $action = 'Are you sure you want to do this?';                                               
+                                }                              
+                            );
 
-    public function testLogoutFailure()
-    {        var_dump($this->WPNonce->ays('log-out'));
+        $this->WPNonce->ays('log-out');
         $this->assertEquals(
-            '',
-            $this->WPNonce->ays('log-out')
+            'You are attempting to log out',
+            $action
         );
-    }*/
+    }
 }
