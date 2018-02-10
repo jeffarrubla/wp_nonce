@@ -58,7 +58,7 @@ class WPNonce {
 	 */
 	public function ays( $action ) {
 		//if(function_exists('wp_nonce_ays')){
-			return wp_nonce_ays( $action );
+			echo wp_nonce_ays( $action );
 		/*}else{
 			echo 'the function wp_nonce_ays does not exists.';
 		}*/
