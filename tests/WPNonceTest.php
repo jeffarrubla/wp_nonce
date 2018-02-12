@@ -122,6 +122,32 @@ final class WPNonceTest extends TestCase
 
         $this->assertEquals( 'Formatted HTML code', $result );
 
+    }   
+
+    /**
+     *
+     * To determinate if wp_verify_nonce can be called from verify method.
+     *
+     * Refined wp_verify_nonce function with patchwork 
+     *
+     */   
+    public function testLimitTime()
+    {
+        $params = array();
+
+        Patchwork\redefine( 'wp_verify_nonce', function( $nonce, $action  ) use ( &$params ) {
+            $params = compact( 'nonce', 'action' );
+
+            return 'boolean or int';
+        } );
+
+        $result = $this->WPNonce->verify( 'new_value' );
+
+        $this->assertEquals( 'new_value', $params['nonce'] );
+        $this->assertEquals( -1, $params['action'] );
+
+        $this->assertEquals( 'boolean or int', $result );
+
     }
 
 
