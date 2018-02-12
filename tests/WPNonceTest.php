@@ -79,19 +79,22 @@ final class WPNonceTest extends TestCase
      */
     public function testCanReturnField()
     {
-        Patchwork\redefine('wp_nonce_field', 
-                                function( $action = -1, $name = "_wpnonce", $referer = true , $echo = true ){                                                             
+        $params = array();
 
-                                    $nonce_field = '<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . $action . '" />';
+        Patchwork\redefine( 'wp_nonce_field', function( $action, $name, $referer, $echo ) use ( &$params ) {
+            $params = compact( 'action', 'name', 'referer', 'echo' );
 
-                                    return $nonce_field;
-                                }                              
-                            );
+            return 'HTML code';
+        } );
 
-        $this->assertEquals(
-            '<input type="hidden" id="_wpnonce" name="_wpnonce" value="new_value" />',
-            $this->WPNonce->field( 'new_value' )
-        );
+        $result = $this->WPNonce->field( 'new_value' );
+
+        $this->assertEquals( 'new_value', $params['action'] );
+        $this->assertEquals( '_wpnonce', $params['name'] );
+        $this->assertEquals( true, $params['referer'] );
+        $this->assertEquals( true, $params['echo'] );
+
+        $this->assertEquals( 'HTML code', $result );
     }
 
 }
