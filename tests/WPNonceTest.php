@@ -97,4 +97,32 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( 'HTML code', $result );
     }
 
+    /**
+     *
+     * To determinate if wp_nonce_url can be called from url method.
+     *
+     * Refined wp_nonce_url function with patchwork 
+     *
+     */
+    public function testCanCreateURL()
+    {
+        $params = array();
+
+        Patchwork\redefine( 'wp_nonce_url', function( $actionurl, $action, $name  ) use ( &$params ) {
+            $params = compact( 'actionurl', 'action', 'name' );
+
+            return 'Formatted HTML code';
+        } );
+
+        $result = $this->WPNonce->url( 'new_value' );
+
+        $this->assertEquals( 'new_value', $params['actionurl'] );
+        $this->assertEquals( -1, $params['action'] );
+        $this->assertEquals( '_wpnonce', $params['name'] );
+
+        $this->assertEquals( 'Formatted HTML code', $result );
+
+    }
+
+
 }
