@@ -21,3 +21,7 @@ function wp_nonce_url( $actionurl, $action, $name ) {
 function wp_verify_nonce( $nonce, $action ) {
 
 }
+
+function wp_create_nonce($action) {
+
+}

@@ -111,16 +111,16 @@ final class WPNonceTest extends TestCase
         Patchwork\redefine( 'wp_nonce_url', function( $actionurl, $action, $name  ) use ( &$params ) {
             $params = compact( 'actionurl', 'action', 'name' );
 
-            return 'Formatted HTML code';
+            return 'URL with nonce';
         } );
 
-        $result = $this->WPNonce->url( 'new_value' );
+        $result = $this->WPNonce->url( 'https://example.org/' );
 
-        $this->assertEquals( 'new_value', $params['actionurl'] );
+        $this->assertEquals( 'https://example.org/', $params['actionurl'] );
         $this->assertEquals( -1, $params['action'] );
         $this->assertEquals( '_wpnonce', $params['name'] );
 
-        $this->assertEquals( 'Formatted HTML code', $result );
+        $this->assertEquals( 'URL with nonce', $result );
 
     }   
 
@@ -131,7 +131,7 @@ final class WPNonceTest extends TestCase
      * Refined wp_verify_nonce function with patchwork 
      *
      */   
-    public function testLimitTime()
+    public function testCanVerifyNonce()
     {
         $params = array();
 
@@ -141,12 +141,37 @@ final class WPNonceTest extends TestCase
             return 'boolean or int';
         } );
 
-        $result = $this->WPNonce->verify( 'new_value' );
+        $result = $this->WPNonce->verify( 'nonce_value' );
 
-        $this->assertEquals( 'new_value', $params['nonce'] );
+        $this->assertEquals( 'nonce_value', $params['nonce'] );
         $this->assertEquals( -1, $params['action'] );
 
         $this->assertEquals( 'boolean or int', $result );
+
+    }
+
+    /**
+     *
+     * To determinate if wp_create_nonce can be called from create method.
+     *
+     * Refined wp_create_nonce function with patchwork 
+     *
+     */  
+    public function testCanCreateNonce()
+    {
+        $param;
+
+        Patchwork\redefine( 'wp_create_nonce', function( $action  ) use ( &$param ) {
+            $param = $action;
+
+            return 'token';
+        } );
+
+        $result = $this->WPNonce->create( 'new_value' );
+
+        $this->assertEquals( 'new_value', $param );        
+
+        $this->assertEquals( 'token', $result );
 
     }
 
