@@ -95,6 +95,15 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( true, $params['echo'] );
 
         $this->assertEquals( 'HTML code', $result );
+
+       // passing more values
+        $result = $this->WPNonce->field( 'new_value', 'my_field', true );
+        $this->assertEquals( 'new_value', $params['action'] );
+        $this->assertEquals( 'my_field', $params['name'] );
+        $this->assertEquals( true, $params['referer'] );
+        $this->assertEquals( true, $params['echo'] );
+
+        $this->assertEquals( 'HTML code', $result );
     }
 
     /**
@@ -121,7 +130,6 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( '_wpnonce', $params['name'] );
 
         $this->assertEquals( 'URL with nonce', $result );
-
     }   
 
     /**
@@ -175,5 +183,81 @@ final class WPNonceTest extends TestCase
 
     }
 
+    /**
+     *
+     * To determinate if check_admin_referer can be called from check_admin method.
+     *
+     * Refined check_admin_referer function with patchwork 
+     *
+     */  
+    public function testCheckAdminReferer()
+    {
+        $params = array();
+
+        Patchwork\redefine( 'check_admin_referer', function( $action , $query_arg ) use ( &$params ) {
+            $params = compact( 'action', 'query_arg' );
+
+            return 'false or int';
+        } );
+
+        $result = $this->WPNonce->check_admin( 'new_action' );
+
+        $this->assertEquals( 'new_action', $params['action'] );
+        $this->assertEquals( '_wpnonce', $params['query_arg'] );
+
+        $this->assertEquals( 'false or int', $result );
+
+    }
+
+    /**
+     *
+     * To determinate if check_ajax_referer can be called from check_ajax method.
+     *
+     * Refined check_ajax_referer function with patchwork 
+     *
+     */  
+    public function testCheckAjaxReferer()
+    {
+        $params = array();
+
+        Patchwork\redefine( 'check_ajax_referer', function( $action , $query_arg, $die ) use ( &$params ) {
+            $params = compact( 'action', 'query_arg', 'die' );
+
+            return 'false or int';
+        } );
+
+        $result = $this->WPNonce->check_ajax( 'new_action' );
+
+        $this->assertEquals( 'new_action', $params['action'] );
+        $this->assertEquals( false, $params['query_arg'] );
+        $this->assertEquals( true, $params['die'] );
+
+        $this->assertEquals( 'false or int', $result );
+    }
+
+
+    /**
+     *
+     * To determinate if wp_referer_field can be called from referer_field method.
+     *
+     * Refined wp_referer_field function with patchwork 
+     *
+     */  
+    public function testRefererField()
+    {
+        $param;
+
+        Patchwork\redefine( 'wp_referer_field', function( $echo ) use ( &$param ) {
+            $param = $echo ;
+
+            return 'HTML code';
+        } );
+
+        $result = $this->WPNonce->referer_field( true );
+
+        $this->assertEquals( true, $param );
+
+        $this->assertEquals( 'HTML code', $result );
+    }
 
 }

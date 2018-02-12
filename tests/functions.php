@@ -25,3 +25,15 @@ function wp_verify_nonce( $nonce, $action ) {
 function wp_create_nonce($action) {
 
 }
+
+function check_admin_referer( $action, $query_arg ) {
+
+}
+
+function check_ajax_referer( $action, $query_arg, $die ) {
+
+}
+
+function wp_referer_field( $echo  ) {
+	
+}

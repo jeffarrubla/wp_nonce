@@ -92,7 +92,11 @@ class WPNonce {
 	 * @return string Nonce field HTML markup.
 	 */
 	public function field( $action = -1, $name = "_wpnonce", $referer = true , $echo = true ) {
-		return wp_nonce_field( $action, $name, $referer, $echo );
+		if(function_exists('wp_nonce_field')){
+			return wp_nonce_field( $action, $name, $referer, $echo );			
+		}else{
+			echo 'the function wp_nonce_field does not exists.';
+		}		
 	}
 
 	/**
@@ -106,7 +110,11 @@ class WPNonce {
 	 * @return string Escaped URL with nonce action added.
 	 */
 	public function url( $actionurl, $action = -1, $name = '_wpnonce' ){
-		return wp_nonce_url( $actionurl, $action, $name );		
+		if(function_exists('wp_nonce_url')){
+			return wp_nonce_url( $actionurl, $action, $name );
+		}else{
+			echo 'the function wp_nonce_url does not exists.';
+		}		
 	}
 
 	/**
@@ -123,7 +131,11 @@ class WPNonce {
 	 *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
 	public function verify( $nonce, $action = -1 ) {
-		return wp_verify_nonce( $nonce, $action );
+		if(function_exists('wp_verify_nonce')){
+			return wp_verify_nonce( $nonce, $action );
+		}else{
+			echo 'the function wp_verify_nonce does not exists.';
+		}		
 	}
 
 	/**
@@ -137,7 +149,11 @@ class WPNonce {
 	 * @return string The token.
 	 */
 	public function create($action = -1) {
-		return wp_create_nonce($action);
+		if(function_exists('wp_create_nonce')){
+			return wp_create_nonce($action);
+		}else{
+			echo 'the function wp_create_nonce does not exists.';
+		}		
 	}
 
 	/**
