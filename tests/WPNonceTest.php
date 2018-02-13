@@ -233,6 +233,23 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( true, $params['die'] );
 
         $this->assertEquals( 'false or int', $result );
+
+        // if it fails $die = false
+        $result = $this->WPNonce->check_ajax( 'new_action', false, false );
+
+        $this->assertEquals( 'new_action', $params['action'] );
+        $this->assertEquals( false, $params['query_arg'] );
+        $this->assertEquals( false, $params['die'] );
+
+        $this->assertEquals( 'false or int', $result );
+
+        // behaviour controlled by user
+        $this->WPNonce->check_ajax( 'new_action', 'something', false );
+        $this->assertEquals( 'new_action', $params['action'] );
+        $this->assertEquals( 'something', $params['query_arg'] );
+        $this->assertEquals( false, $params['die'] );
+
+        $this->assertEquals( 'false or int', $result );
     }
 
 
