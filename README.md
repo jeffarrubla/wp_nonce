@@ -1,6 +1,6 @@
 # WPNonce
 
-Class to use ```wp_nonce_*()``` functions in an object oriented  way.
+Class to use ```wp_nonce_*()``` functions in an object oriented way.
 
 These functions are: 
 - [wp_nonce_ays()](https://codex.wordpress.org/Function_Reference/wp_nonce_ays)
