@@ -17,7 +17,7 @@ final class WPNonceTest extends TestCase
         $this->WPNonce = new WPNonce();
 
     }
- 
+
     /**
      *
      * Called at the end of testing.
@@ -35,7 +35,7 @@ final class WPNonceTest extends TestCase
      *
      */
     public function testIsInstaceOf()
-    {        
+    {
         $this->assertInstanceOf(
             WPNonce::class,
             $this->WPNonce
@@ -46,27 +46,27 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if wp_nonce_ays can be called from ays method.
      *
-     * Refined wp_nonce_ays function with patchwork 
+     * Refined wp_nonce_ays function with patchwork
      *
-     * wp_nonce_ays always die, so to check if the function is called, 
+     * wp_nonce_ays always die, so to check if the function is called,
      * modify a variable inside it, if the variable changes, the function
      * is been called.
      *
      */
     public function testCanDisplayMessage()
-    {   
-        $action;              
-        Patchwork\redefine('wp_nonce_ays', 
-                                function($arg) use (&$action){ 
-                                    $action = $arg;                                            
-                                }                              
+    {
+        $action;
+        Patchwork\redefine('wp_nonce_ays',
+                                function($arg) use (&$action){
+                                    $action = $arg;
+                                }
                             );
-        
+
         $this->WPNonce->ays('Are you sure you want to do this?');
         // do assert to check if $action has been modify inside the function
         $this->assertEquals(
             'Are you sure you want to do this?',
-            $action           
+            $action
         );
     }
 
@@ -74,7 +74,7 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if wp_nonce_field can be called from ays method.
      *
-     * Refined wp_nonce_field function with patchwork 
+     * Refined wp_nonce_field function with patchwork
      *
      */
     public function testCanReturnField()
@@ -110,7 +110,7 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if wp_nonce_url can be called from url method.
      *
-     * Refined wp_nonce_url function with patchwork 
+     * Refined wp_nonce_url function with patchwork
      *
      */
     public function testCanCreateURL()
@@ -130,15 +130,15 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( '_wpnonce', $params['name'] );
 
         $this->assertEquals( 'URL with nonce', $result );
-    }   
+    }
 
     /**
      *
      * To determinate if wp_verify_nonce can be called from verify method.
      *
-     * Refined wp_verify_nonce function with patchwork 
+     * Refined wp_verify_nonce function with patchwork
      *
-     */   
+     */
     public function testCanVerifyNonce()
     {
         $params = array();
@@ -162,9 +162,9 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if wp_create_nonce can be called from create method.
      *
-     * Refined wp_create_nonce function with patchwork 
+     * Refined wp_create_nonce function with patchwork
      *
-     */  
+     */
     public function testCanCreateNonce()
     {
         $param;
@@ -177,7 +177,7 @@ final class WPNonceTest extends TestCase
 
         $result = $this->WPNonce->create( 'new_value' );
 
-        $this->assertEquals( 'new_value', $param );        
+        $this->assertEquals( 'new_value', $param );
 
         $this->assertEquals( 'token', $result );
 
@@ -187,9 +187,9 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if check_admin_referer can be called from check_admin method.
      *
-     * Refined check_admin_referer function with patchwork 
+     * Refined check_admin_referer function with patchwork
      *
-     */  
+     */
     public function testCheckAdminReferer()
     {
         $params = array();
@@ -213,9 +213,9 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if check_ajax_referer can be called from check_ajax method.
      *
-     * Refined check_ajax_referer function with patchwork 
+     * Refined check_ajax_referer function with patchwork
      *
-     */  
+     */
     public function testCheckAjaxReferer()
     {
         $params = array();
@@ -257,9 +257,9 @@ final class WPNonceTest extends TestCase
      *
      * To determinate if wp_referer_field can be called from referer_field method.
      *
-     * Refined wp_referer_field function with patchwork 
+     * Refined wp_referer_field function with patchwork
      *
-     */  
+     */
     public function testRefererField()
     {
         $param;

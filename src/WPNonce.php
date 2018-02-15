@@ -1,16 +1,16 @@
 <?php
-/** 
+/**
  *
- * @package nonce  
- * 
+ * @package nonce
+ *
  */
 /*
 	Plugin Name: WP Nonce
-	Plugin URI: 
+	Plugin URI:
 	description: Class to use wp_nonce_*() functions in an object oriented  way.
-				 These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), 
-				 					  wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), 
-				 					  check_ajax_referer(), wp_referer_field()	
+				 These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(),
+				 					  wp_verify_nonce(), wp_create_nonce(), check_admin_referer(),
+				 					  check_ajax_referer(), wp_referer_field()
 	Version: 0.1
 	Author: Jefferson Arrubla
 	Author URI: http://github.com/jeffarrubla
@@ -25,12 +25,12 @@
  */
 
 /**
- * 
+ *
  * These are the functions to replace:
  * Nonce functions: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), check_ajax_referer(), wp_referer_field()
  *
- * Nonce hooks: nonce_life, nonce_user_logged_out, explain_nonce_(verb)-(noun), check_admin_referer 
- * 
+ * Nonce hooks: nonce_life, nonce_user_logged_out, explain_nonce_(verb)-(noun), check_admin_referer
+ *
  */
 class WPNonce {
 
@@ -93,10 +93,10 @@ class WPNonce {
 	 */
 	public function field( $action = -1, $name = "_wpnonce", $referer = true , $echo = true ) {
 		if(function_exists('wp_nonce_field')){
-			return wp_nonce_field( $action, $name, $referer, $echo );			
+			return wp_nonce_field( $action, $name, $referer, $echo );
 		}else{
 			echo 'the function wp_nonce_field does not exists.';
-		}		
+		}
 	}
 
 	/**
@@ -114,7 +114,7 @@ class WPNonce {
 			return wp_nonce_url( $actionurl, $action, $name );
 		}else{
 			echo 'the function wp_nonce_url does not exists.';
-		}		
+		}
 	}
 
 	/**
@@ -135,7 +135,7 @@ class WPNonce {
 			return wp_verify_nonce( $nonce, $action );
 		}else{
 			echo 'the function wp_verify_nonce does not exists.';
-		}		
+		}
 	}
 
 	/**
@@ -153,7 +153,7 @@ class WPNonce {
 			return wp_create_nonce($action);
 		}else{
 			echo 'the function wp_create_nonce does not exists.';
-		}		
+		}
 	}
 
 	/**
@@ -187,7 +187,7 @@ class WPNonce {
 	 *                                Default true.
 	 * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
 	 *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
-	 */	
+	 */
 	public function check_ajax( $action = -1, $query_arg = false, $die = true ) {
 		return check_ajax_referer( $action, $query_arg, $die );
 	}
