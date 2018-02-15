@@ -2,7 +2,7 @@
 	"name": "vendor/wp-nonce",
     "description": "Class to use wp_nonce_*() functions in an object oriented way.",
     "require": {
-        "php": "^5.3.3 || ^7.0",      
+        "php": ">=5.4",
     },
     "require-dev": {
         "phpunit/phpunit": "^5",
