@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * Include Patchwork, autoload and functions files to make the testing
  * Patchwork must be include first always.
  *
