@@ -56,6 +56,7 @@ final class WPNonceTest extends TestCase
     public function testCanDisplayMessage()
     {
         $action = '';
+        
         Patchwork\redefine('wp_nonce_ays', function($arg) use (&$action){
             $action = $arg;
         });

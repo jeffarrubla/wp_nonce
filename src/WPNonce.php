@@ -171,7 +171,11 @@ class WPNonce {
 	 */
 
 	public function check_admin( $action = -1, $query_arg = '_wpnonce' ) {
-		return check_admin_referer( $action, $query_arg );
+		if(function_exists('check_admin_referer')){
+			return check_admin_referer( $action, $query_arg );
+		}else{
+			echo 'the function check_admin_referer does not exists.';
+		}
 	}
 
 	/**
@@ -189,7 +193,11 @@ class WPNonce {
 	 *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
 	public function check_ajax( $action = -1, $query_arg = false, $die = true ) {
-		return check_ajax_referer( $action, $query_arg, $die );
+		if(function_exists('check_ajax_referer')){
+			return check_ajax_referer( $action, $query_arg, $die );
+		}else{
+			echo 'the function check_ajax_referer does not exists.';
+		}
 	}
 
 	/**
@@ -204,7 +212,11 @@ class WPNonce {
 	 * @return string Referer field HTML markup.
 	 */
 	public function referer_field( $echo = true ){
-		return wp_referer_field( $echo );
+		if(function_exists('wp_referer_field')){
+			return wp_referer_field( $echo );
+		}else{
+			echo 'the function wp_referer_field does not exists.';
+		}
 	}
 }
 
