@@ -55,12 +55,10 @@ final class WPNonceTest extends TestCase
      */
     public function testCanDisplayMessage()
     {
-        $action;
-        Patchwork\redefine('wp_nonce_ays',
-                                function($arg) use (&$action){
-                                    $action = $arg;
-                                }
-                            );
+        $action = '';
+        Patchwork\redefine('wp_nonce_ays', function($arg) use (&$action){
+            $action = $arg;
+        });
 
         $this->WPNonce->ays('Are you sure you want to do this?');
         // do assert to check if $action has been modify inside the function
@@ -167,7 +165,7 @@ final class WPNonceTest extends TestCase
      */
     public function testCanCreateNonce()
     {
-        $param;
+        $param = '';
 
         Patchwork\redefine( 'wp_create_nonce', function( $action  ) use ( &$param ) {
             $param = $action;
@@ -262,7 +260,7 @@ final class WPNonceTest extends TestCase
      */
     public function testRefererField()
     {
-        $param;
+        $param = '';
 
         Patchwork\redefine( 'wp_referer_field', function( $echo ) use ( &$param ) {
             $param = $echo ;
