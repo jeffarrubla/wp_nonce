@@ -34,16 +34,11 @@
  */
 class WPNonce {
 
-	// Constructor
+	/**
+	 * Constructor
+	 -
+	 */
 	function __construct() {
-		/*add_action( 'wp_nonce_ays', array( $this, 'ays' ));
-		add_action( 'wp_nonce_field', array( $this, 'field' ));
-		add_action( 'wp_nonce_url', array( $this, 'url' ));
-		add_action( 'wp_verify_nonce', array( $this, 'verify' ));
-		add_action( 'wp_create_nonce', array( $this, 'create' ));
-		add_action( 'check_admin_referer', array( $this, 'check_admin' ));
-		add_action( 'check_ajax_referer', array( $this, 'check_ajax' ));
-		add_action( 'wp_referer_field', array( $this, 'referer_field' ));	*/
 	}
 
 	/**
@@ -169,7 +164,6 @@ class WPNonce {
 	 * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
 	 *                   0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
-
 	public function check_admin( $action = -1, $query_arg = '_wpnonce' ) {
 		if(function_exists('check_admin_referer')){
 			return check_admin_referer( $action, $query_arg );
