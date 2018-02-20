@@ -198,5 +198,3 @@ class WPNonce {
 		}
 	}
 }
-
-new WPNonce();
