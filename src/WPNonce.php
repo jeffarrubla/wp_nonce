@@ -1,22 +1,22 @@
 <?php
 /**
  *
- * @package jeffarrubla/wp-nonce
+ * @package jeffarrubla
+ * @subpackage wp-nonce
  *
+ *
+ *	Name: WP Nonce
+ *	URI: https://github.com/jeffarrubla/wp_nonce
+ *	Description: Class to use wp_nonce_*() functions in an object oriented  way.
+ * 				These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(),
+ *				   					 wp_verify_nonce(), wp_create_nonce(), check_admin_referer(),
+ *				   					 check_ajax_referer(), wp_referer_field()
+ *	Version: 0.1
+ *	Author: Jefferson Arrubla
+ *	Author URI: http://github.com/jeffarrubla
+ *	License: GPL2
+ *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  */
-/*
-	Plugin Name: WP Nonce
-	Plugin URI:
-	description: Class to use wp_nonce_*() functions in an object oriented  way.
-				These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(),
-				   					 wp_verify_nonce(), wp_create_nonce(), check_admin_referer(),
-				   					 check_ajax_referer(), wp_referer_field()
-	Version: 0.1
-	Author: Jefferson Arrubla
-	Author URI: http://github.com/jeffarrubla
-	License: GPL2
-	License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-*/
 class WPNonce {
 
 	/**
