@@ -36,7 +36,7 @@ class WPNonce {
 
 	/**
 	 * Constructor
-	 -
+	 *
 	 */
 	function __construct() {
 	}
