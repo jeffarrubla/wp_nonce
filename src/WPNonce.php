@@ -1,37 +1,22 @@
 <?php
 /**
  *
- * @package nonce
+ * @package jeffarrubla/wp-nonce
  *
  */
 /*
 	Plugin Name: WP Nonce
 	Plugin URI:
 	description: Class to use wp_nonce_*() functions in an object oriented  way.
-				 These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(),
-				 					  wp_verify_nonce(), wp_create_nonce(), check_admin_referer(),
-				 					  check_ajax_referer(), wp_referer_field()
+				These functions are: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(),
+				   					 wp_verify_nonce(), wp_create_nonce(), check_admin_referer(),
+				   					 check_ajax_referer(), wp_referer_field()
 	Version: 0.1
 	Author: Jefferson Arrubla
 	Author URI: http://github.com/jeffarrubla
 	License: GPL2
 	License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 */
-
-/**
- *
- * Check this https://codex.wordpress.org/WordPress_Nonces
- *
- */
-
-/**
- *
- * These are the functions to replace:
- * Nonce functions: wp_nonce_ays(), wp_nonce_field(), wp_nonce_url(), wp_verify_nonce(), wp_create_nonce(), check_admin_referer(), check_ajax_referer(), wp_referer_field()
- *
- * Nonce hooks: nonce_life, nonce_user_logged_out, explain_nonce_(verb)-(noun), check_admin_referer
- *
- */
 class WPNonce {
 
 	/**
