@@ -9,7 +9,7 @@ final class WPNonceTest extends TestCase
     /**
      *
      * Called at the beginning of testing.
-     * Initialize the class and redefine wp_nonce_*() functions with Patchwork.
+     * Initialize the class.
      *
      */
     protected function setUp()
