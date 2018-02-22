@@ -71,9 +71,10 @@ final class WPNonceTest extends TestCase
 
     /**
      *
-     * To determinate if wp_nonce_field can be called from ays method.
+     * To determinate if wp_nonce_field can be called from field method.
      *
-     * Refined wp_nonce_field function with patchwork
+     * Refined wp_nonce_field function with patchwork.
+     *
      *
      */
     public function testCanReturnField()
@@ -145,7 +146,7 @@ final class WPNonceTest extends TestCase
         Patchwork\redefine( 'wp_verify_nonce', function( $nonce, $action  ) use ( &$params ) {
             $params = compact( 'nonce', 'action' );
 
-            return 'boolean or int';
+            return 'false or int';
         } );
 
         $result = $this->WPNonce->verify( 'nonce_value' );
@@ -153,7 +154,7 @@ final class WPNonceTest extends TestCase
         $this->assertEquals( 'nonce_value', $params['nonce'] );
         $this->assertEquals( -1, $params['action'] );
 
-        $this->assertEquals( 'boolean or int', $result );
+        $this->assertEquals( 'false or int', $result );
 
     }
 

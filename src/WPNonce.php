@@ -1,8 +1,8 @@
 <?php
 /**
  *
- * @package jeffarrubla
- * @subpackage wp-nonce
+ *  @package jeffarrubla
+ *  @subpackage wp-nonce
  *
  *
  *	Name: WP Nonce
