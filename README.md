@@ -17,6 +17,7 @@ These functions are:
 
 - [PHP](https://secure.php.net/)
 - [Composer](https://getcomposer.org/)
+- [Wordpress](https://wordpress.com/) To run on live system.
 
 ## Running the tests
 
