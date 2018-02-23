@@ -15,8 +15,8 @@ These functions are:
 
 ### Prerequisites
 
-- PHP
-- Composer
+- [PHP](https://secure.php.net/)
+- [Composer](https://getcomposer.org/)
 
 ## Running the tests
 
