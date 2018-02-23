@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Clone the project 
 ```
-https://github.com/jeffarrubla/wp_nonce.git
+git clone https://github.com/jeffarrubla/wp_nonce.git
 ```
 
 or download the zip
