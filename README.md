@@ -21,6 +21,15 @@ These instructions will get you a copy of the project up and running on your loc
 - [PHP](https://secure.php.net/)
 - [Composer](https://getcomposer.org/)
 
+### Installing
+
+Clone the project 
+```
+https://github.com/jeffarrubla/wp_nonce.git
+```
+
+or download the zip
+
 ## Running the tests
 
 To test that the ```wp_nonce_*()``` functions can be called from the class.
