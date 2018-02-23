@@ -2,10 +2,15 @@
 	"name": "jeffarrubla/wp-nonce",
     "description": "Class to use wp_nonce_*() functions in an object oriented way.",
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^5",
         "antecedent/patchwork": "2.1.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "WPNonce": "src/"
+        }
     }
 }

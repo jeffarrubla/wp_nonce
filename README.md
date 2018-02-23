@@ -56,7 +56,6 @@ phpunit --bootstrap tests/bootstrap.php  tests/WPNonceTest  --testdox
 
 - [Wordpress](https://wordpress.com/)
 
-
 ## License
 
 [GPL2](https://www.gnu.org/licenses/gpl-2.0.html)
