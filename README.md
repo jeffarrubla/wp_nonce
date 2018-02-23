@@ -17,7 +17,6 @@ These functions are:
 
 - [PHP](https://secure.php.net/)
 - [Composer](https://getcomposer.org/)
-- [Wordpress](https://wordpress.com/) To run on live system.
 
 ## Running the tests
 
@@ -38,7 +37,14 @@ or
 phpunit --bootstrap tests/bootstrap.php  tests/WPNonceTest  --testdox
 ```
 
-License
-----
+
+## Deployment
+
+### Prerequisites
+
+- [Wordpress](https://wordpress.com/)
+
+
+## License
 
 [GPL2](https://www.gnu.org/licenses/gpl-2.0.html)
