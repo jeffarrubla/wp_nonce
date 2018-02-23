@@ -13,8 +13,9 @@ These functions are:
 - [wp_referer_field()](https://codex.wordpress.org/Function_Reference/wp_referer_field)
 
 
-### Development
+## Running the tests
 
+The tests test that the ```wp_nonce_*()``` functions can be called from the class.
 To test install using composer, it requires:
 
 - [Patchwork](http://patchwork2.org/)
@@ -23,6 +24,12 @@ To test install using composer, it requires:
 To run the test do:
 ```
 phpunit --bootstrap tests/bootstrap.php  tests/WPNonceTest
+```
+
+or
+
+```
+phpunit --bootstrap tests/bootstrap.php  tests/WPNonceTest  --testdox
 ```
 
 License
