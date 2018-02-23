@@ -28,7 +28,15 @@ Clone the project
 git clone https://github.com/jeffarrubla/wp_nonce.git
 ```
 
-or download the zip
+download the zip or using composer
+```
+{
+    "require": {
+        "jeffarrubla/wp-nonce": "dev-master",
+        "php": ">=5.4"
+    }
+} 
+```
 
 ## Running the tests
 
